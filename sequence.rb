@@ -60,6 +60,6 @@ end
 
 
 if __FILE__ == $0
-  puts next_el(s=options[:start], d=options[:depth])
+  puts next_el(options[:start], options[:depth])
 end
 
