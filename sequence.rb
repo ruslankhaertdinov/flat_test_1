@@ -3,6 +3,7 @@
 
 require 'optparse'
 
+
 def next_el(n=1, m)
   res = []
 
