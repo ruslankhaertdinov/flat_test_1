@@ -3,7 +3,7 @@
 
 require 'optparse'
 
-def next_el(n, m)
+def next_el(n=1, m)
   res = []
 
   m.times do
@@ -32,16 +32,11 @@ end
 options = {}
 
 optparse = OptionParser.new do |opts|
-  opts.banner = "Usage: test1.rb [option1] [option2]"
+  opts.banner = "Usage: sequence.rb [length]"
 
-  options[:start] = 1
-  opts.on('-s', '--start N', Integer, 'Starting value') do |st_v|
-    options[:start] = st_v
-  end
-
-  options[:depth] = 7
-  opts.on('-d', '--depth N', Integer, 'Queue depth') do |d|
-    options[:depth] = d
+  options[:len] = 7
+  opts.on('-l', '--length N', Integer, 'Sequence length') do |l|
+    options[:len] = l
   end
 
   opts.on('-h', '--help', 'Display this screen') do
@@ -60,6 +55,6 @@ end
 
 
 if __FILE__ == $0
-  puts next_el(options[:start], options[:depth])
+  puts next_el(options[:len])
 end
 
