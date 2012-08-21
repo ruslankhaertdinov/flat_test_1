@@ -3,36 +3,28 @@
 
 require 'optparse'
 
-class NextEl
-  attr_accessor :n
+class SequenceGenerator
 
-  def initialize()
-    @n = 1
+  def initialize(start = 1)
+    @last_el = start
   end
 
-  def next_el(len)
-    res = []
+  def next
+    chars = @last_el.to_s.scan(/\d/).map { |i| i.to_i }
+    acc = []
+    last = nil
 
-    len.times do
-      res.push(n.to_s)
-      @n = @n.to_s.scan(/\d/).map { |i| i.to_i }
-      acc = []
-      last = nil
-
-      @n.each do |x|
-        if x == last
-          acc[-1][0] += 1
-        else
-          acc.push([1, x])
-        end
-
-        last = x
+    chars.each do |x|
+      if x == last
+        acc[-1][0] += 1
+      else
+        acc.push([1, x])
       end
 
-      @n = acc.flatten.join('')
+      last = x
     end
 
-    res
+    @last_el = acc.flatten.join('')
   end
 end
 
@@ -62,7 +54,7 @@ end
 
 
 if __FILE__ == $0
-  a = NextEl.new
-  print a.next_el(options[:len])
+  g = SequenceGenerator.new
+  options[:len].times {puts g.next()}
 end
 
