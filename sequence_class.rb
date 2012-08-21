@@ -5,7 +5,7 @@ require 'optparse'
 
 class SequenceGenerator
 
-  def initialize(start = 1)
+  def initialize(start=1)
     @last_el = start
   end
 
@@ -31,7 +31,7 @@ end
 options = {}
 
 optparse = OptionParser.new do |opts|
-  opts.banner = "Usage: sequence.rb [-l N]"
+  opts.banner = "Usage: file_name.rb [-l N]"
 
   options[:len] = 7
   opts.on('-l', '--length N', Integer, 'Sequence length') do |l|
@@ -45,15 +45,14 @@ optparse = OptionParser.new do |opts|
 end
 
 
-begin
-  optparse.parse!
-rescue OptionParser::InvalidArgument, OptionParser::InvalidOption
-  puts optparse
-  Process.exit!(true)
-end
-
-
 if __FILE__ == $0
+  begin
+    optparse.parse!
+  rescue OptionParser::InvalidArgument, OptionParser::InvalidOption
+    puts optparse
+    Process.exit!(true)
+  end
+
   g = SequenceGenerator.new
   options[:len].times {puts g.next()}
 end
