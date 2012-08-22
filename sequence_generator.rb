@@ -10,7 +10,6 @@ class SequenceGenerator
   end
 
   def next
-    #chars = @last_el.to_s.scan(/\d/).map { |i| i.to_i }
     chars = @last_el.to_s.scan(/\d/).map { |i| i.to_i }
     acc = []
     last = nil
