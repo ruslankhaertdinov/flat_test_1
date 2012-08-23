@@ -6,11 +6,11 @@ require 'optparse'
 class SequenceGenerator
 
   def initialize(start='1')
-    @last_el = start
+    @last = start
   end
 
   def next
-    chars = @last_el.split(//)
+    chars = @last.split(//)
     acc = []
     last = nil
 
@@ -24,7 +24,7 @@ class SequenceGenerator
       last = x
     end
 
-    @last_el = acc.flatten.join('')
+    @last = acc.flatten.join('')
   end
 end
 
