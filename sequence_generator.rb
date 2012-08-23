@@ -5,12 +5,12 @@ require 'optparse'
 
 class SequenceGenerator
 
-  def initialize(start=1)
+  def initialize(start='1')
     @last_el = start
   end
 
   def next
-    chars = @last_el.to_s.scan(/\d/).map { |i| i.to_i }
+    chars = @last_el.split(//)
     acc = []
     last = nil
 
