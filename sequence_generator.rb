@@ -5,7 +5,7 @@ require 'optparse'
 
 class SequenceGenerator
 
-  def initialize(start=1)
+  def initialize(start = 1)
     @last = start.to_s
   end
 
