@@ -28,24 +28,25 @@ class SequenceGenerator
   end
 end
 
-options = {}
-
-optparse = OptionParser.new do |opts|
-  opts.banner = "Usage: file_name.rb [-l N]"
-
-  options[:len] = 7
-  opts.on('-l', '--length N', Integer, 'Sequence length') do |l|
-    options[:len] = l
-  end
-
-  opts.on('-h', '--help', 'Display this screen') do
-    puts opts
-    exit
-  end
-end
-
 
 if __FILE__ == $0
+
+  options = {}
+
+  optparse = OptionParser.new do |opts|
+    opts.banner = "Usage: file_name.rb [-l N]"
+
+    options[:len] = 7
+    opts.on('-l', '--length N', Integer, 'Sequence length') do |l|
+      options[:len] = l
+    end
+
+    opts.on('-h', '--help', 'Display this screen') do
+      puts opts
+      exit
+    end
+  end
+
   begin
     optparse.parse!
   rescue OptionParser::InvalidArgument, OptionParser::InvalidOption
