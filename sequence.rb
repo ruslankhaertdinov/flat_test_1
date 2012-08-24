@@ -4,12 +4,12 @@
 require 'optparse'
 
 
-def next_el(n=1, m)
+def next_el(n='1', m)
   res = []
 
   m.times do
     res.push(n.to_s)
-    n = n.to_s.scan(/\d/).map { |i| i.to_i }
+    n = n.split(//)
     acc = []
     last = nil
 
@@ -47,15 +47,14 @@ optparse = OptionParser.new do |opts|
 end
 
 
-begin
-  optparse.parse!
-rescue OptionParser::InvalidArgument, OptionParser::InvalidOption
-  puts optparse
-  Process.exit!(true)
-end
-
-
 if __FILE__ == $0
+  begin
+    optparse.parse!
+  rescue OptionParser::InvalidArgument, OptionParser::InvalidOption
+    puts optparse
+    Process.exit!(true)
+  end
+
   puts next_el(options[:len])
 end
 
