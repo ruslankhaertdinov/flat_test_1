@@ -55,6 +55,6 @@ if __FILE__ == $0
   end
 
   g = SequenceGenerator.new
-  options[:len].times {puts g.next()}
+  options[:len].times {puts g.next}
 end
 
